@@ -113,6 +113,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.bluetooth.opp=true \
     ro.qualcomm.bluetooth.pbap=true
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.config.zram=true
+
 # Maintainer
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.mk.maintainer=guaiyihu

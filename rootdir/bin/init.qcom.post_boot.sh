@@ -27,6 +27,17 @@
 #
 
 target=`getprop ro.board.platform`
+zram_enable=`getprop ro.vendor.config.zram`
+
+# Zram disk - 512MB size
+if [ "$zram_enable" == "true" ]; then
+    echo lz4 > /sys/class/block/zram0/comp_algorithm
+    echo 3 > /sys/class/block/zram0/max_comp_streams
+    echo 536870912 > /sys/block/zram0/disksize
+    mkswap /dev/block/zram0
+    swapon /dev/block/zram0 -p 32758
+fi
+
 case "$target" in
     "msm7201a_ffa" | "msm7201a_surf" | "msm7627_ffa" | "msm7627_6x" | "msm7627a"  | "msm7627_surf" | \
     "qsd8250_surf" | "qsd8250_ffa" | "msm7630_surf" | "msm7630_1x" | "msm7630_fusion" | "qsd8650a_st1x")
