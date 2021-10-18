@@ -14,6 +14,8 @@
 # limitations under the License.
 #
 
+ifneq ($(filter cancro virgo,$(TARGET_DEVICE)),)
+
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
@@ -29,3 +31,5 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE := libwcnss_qmi
 
 include $(BUILD_SHARED_LIBRARY)
+
+endif
